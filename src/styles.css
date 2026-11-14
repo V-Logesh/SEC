@@ -1,0 +1,198 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * SEC SAI Electrical and Controls — "Industrial Steel" design system.
+ * Dark brushed-steel surfaces, bold SAI-blue headings, orange machine accents.
+ * All colors are semantic oklch tokens; components never hardcode colors.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-steel: var(--steel);
+  --color-steel-light: var(--steel-light);
+  --color-steel-dark: var(--steel-dark);
+}
+
+@theme {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.17 0.01 258);
+  --foreground: oklch(0.945 0.008 250);
+  --card: oklch(0.225 0.012 258);
+  --card-foreground: oklch(0.945 0.008 250);
+  --popover: oklch(0.225 0.012 258);
+  --popover-foreground: oklch(0.945 0.008 250);
+  --primary: oklch(0.58 0.18 262);
+  --primary-foreground: oklch(0.985 0.002 250);
+  --secondary: oklch(0.29 0.015 258);
+  --secondary-foreground: oklch(0.945 0.008 250);
+  --muted: oklch(0.28 0.012 258);
+  --muted-foreground: oklch(0.76 0.01 255);
+  --accent: oklch(0.72 0.185 50);
+  --accent-foreground: oklch(0.17 0.03 45);
+  --destructive: oklch(0.62 0.21 25);
+  --destructive-foreground: oklch(0.985 0.002 250);
+  --border: oklch(0.37 0.014 258);
+  --input: oklch(0.37 0.014 258);
+  --ring: oklch(0.72 0.185 50);
+  --steel: oklch(0.34 0.014 258);
+  --steel-light: oklch(0.62 0.012 255);
+  --steel-dark: oklch(0.205 0.01 258);
+}
+
+.dark {
+  --background: oklch(0.17 0.01 258);
+  --foreground: oklch(0.945 0.008 250);
+  --card: oklch(0.225 0.012 258);
+  --card-foreground: oklch(0.945 0.008 250);
+  --popover: oklch(0.225 0.012 258);
+  --popover-foreground: oklch(0.945 0.008 250);
+  --primary: oklch(0.58 0.18 262);
+  --primary-foreground: oklch(0.985 0.002 250);
+  --secondary: oklch(0.29 0.015 258);
+  --secondary-foreground: oklch(0.945 0.008 250);
+  --muted: oklch(0.28 0.012 258);
+  --muted-foreground: oklch(0.76 0.01 255);
+  --accent: oklch(0.72 0.185 50);
+  --accent-foreground: oklch(0.17 0.03 45);
+  --destructive: oklch(0.62 0.21 25);
+  --destructive-foreground: oklch(0.985 0.002 250);
+  --border: oklch(0.37 0.014 258);
+  --input: oklch(0.37 0.014 258);
+  --ring: oklch(0.72 0.185 50);
+  --steel: oklch(0.34 0.014 258);
+  --steel-light: oklch(0.62 0.012 255);
+  --steel-dark: oklch(0.205 0.01 258);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 42%, transparent);
+    color: var(--foreground);
+  }
+
+  img {
+    height: auto;
+  }
+}
+
+/* Brushed metal nameplate surface */
+@utility steel-surface {
+  background:
+    linear-gradient(
+      105deg,
+      color-mix(in oklab, var(--steel-light) 18%, transparent) 0%,
+      transparent 18%,
+      transparent 42%,
+      color-mix(in oklab, var(--steel-light) 10%, transparent) 46%,
+      transparent 55%,
+      transparent 78%,
+      color-mix(in oklab, var(--steel-light) 14%, transparent) 82%,
+      transparent 100%
+    ),
+    linear-gradient(160deg, var(--steel) 0%, var(--steel-dark) 70%, var(--steel) 100%);
+}
+
+/* Machine-style hazard edge */
+@utility hazard-stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--accent) 0 14px,
+    color-mix(in oklab, var(--accent) 30%, var(--steel-dark)) 14px 28px
+  );
+}
+
+/* Infinite horizontal marquee (duplicate content twice inside) */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 26s linear infinite;
+}
+
+/* Subtle blueprint grid for section backgrounds */
+@utility blueprint-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--steel-light) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--steel-light) 7%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}

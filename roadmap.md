@@ -1,0 +1,3 @@
+- [ ] Finish matching the visiting-card logo and app icons across the site.
+- [ ] Refine the existing header, all page bodies, and footer for a cohesive, premium 2026 design while preserving content and behavior.
+- [ ] Verify key desktop/mobile layouts, interactions, tests, and build status.
